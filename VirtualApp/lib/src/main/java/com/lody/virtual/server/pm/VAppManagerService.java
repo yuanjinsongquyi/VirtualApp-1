@@ -635,7 +635,7 @@ public class VAppManagerService extends IAppManager.Stub {
                 VServiceKeepAliveService.get().scheduleUpdateKeepAliveList(packageName, VServiceKeepAliveManager.ACTION_DEL);
                 // Just hidden it
                 VNotificationManagerService.get().cancelAllNotification(packageName, userId);
-                VJobSchedulerService.get().cancelAll(ps.appId, userId);
+                VJobSchedulerService.get().cancelAll(ps.appId);
                 VActivityManagerService.get().killAppByPkg(packageName, userId);
                 ps.setInstalled(userId, false);
                 mPersistenceLayer.save();
@@ -726,7 +726,7 @@ public class VAppManagerService extends IAppManager.Stub {
             AttributeCache.instance().removePackage(packageName);
             BroadcastSystem.get().stopApp(packageName);
             VServiceKeepAliveService.get().scheduleUpdateKeepAliveList(packageName, VServiceKeepAliveManager.ACTION_DEL);
-            VJobSchedulerService.get().cancelAll(ps.appId, VUserHandle.USER_ALL);
+            VJobSchedulerService.get().cancelAll(ps.appId);
             VNotificationManagerService.get().cancelAllNotification(packageName, VUserHandle.USER_ALL);
             VActivityManagerService.get().killAppByPkg(packageName, VUserHandle.USER_ALL);
             if (isPackageSupport32Bit(ps)) {

@@ -5,10 +5,12 @@
 
 #include <cstring>
 #include <utils/mylog.h>
-#include <stdlib.h>
+
 #include <utils/zString.h>
 #include <linux/time.h>
 #include <time.h>
+#include <malloc.h>
+
 
 #include "safekey_jni.h"
 #include "utils/zJNIEnv.h"
