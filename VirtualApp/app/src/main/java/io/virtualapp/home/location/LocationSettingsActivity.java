@@ -86,10 +86,7 @@ public class LocationSettingsActivity extends VActivity implements AdapterView.O
                 if (!VirtualCore.get().isPackageLaunchable(info.packageName)) {
                     continue;
                 }
-                if("com.alibaba.android.rimet".equals(info.packageName)){
-                    //排除钉钉
-                    continue;
-                }
+
                 int[] userIds = info.getInstalledUsers();
                 for (int userId : userIds) {
                     LocationData data = new LocationData(this, info, userId);

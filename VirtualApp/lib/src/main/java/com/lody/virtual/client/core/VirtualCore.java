@@ -274,6 +274,7 @@ public final class VirtualCore {
 
     public void startup(Context context, SettingConfig config) throws Throwable {
         if (!isStartUp) {
+            //va主进程不需要hook framework
             if (Looper.myLooper() != Looper.getMainLooper()) {
                 throw new IllegalStateException("VirtualCore.startup() must called in main thread.");
             }
@@ -311,6 +312,7 @@ public final class VirtualCore {
                 SmsObserver.observe();
             }
             if (isServerProcess() || isVAppProcess()) {
+                //server进程和va内部app进程需要hookframework
                 mainThread = ActivityThread.currentActivityThread.call();
             }
             if (isPluginEngine()) {
